@@ -552,9 +552,9 @@
         </address>
       </div>
 
-      <!-- Form: replace YOUR_FORM_ID with your Formspree form ID (or point action at any form service).
+      <!-- Form: replace mvkgayvr with your Formspree form ID (or point action at any form service).
            Until you do, the form opens the visitor's email app with the message filled in. -->
-      <form class="form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="form" id="contact-form" action="https://formspree.io/f/mvkgayvr" method="POST">
         <h3>Send a message</h3>
         <div class="field">
           <label for="f-name">Name</label>
@@ -613,7 +613,7 @@
         var data = new FormData(form);
         if (data.get('_gotcha')) return;
 
-        if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
+        if (form.action.indexOf('mvkgayvr') !== -1) {
           var body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\n\n' + data.get('message');
           window.location.href = 'mailto:' + MAILTO +
             '?subject=' + encodeURIComponent('Website message: ' + data.get('topic')) +
