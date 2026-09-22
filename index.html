@@ -609,7 +609,7 @@
       var status = document.getElementById('form-status');
       var MAILTO = 'fellowcampers@gmail.com';
       form.addEventListener('submit', function (e) {
-        e.preventDefault();
+        
         var data = new FormData(form);
         if (data.get('_gotcha')) return;
 
