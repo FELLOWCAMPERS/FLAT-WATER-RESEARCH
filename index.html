@@ -562,6 +562,7 @@
       <!-- Form: replace YOUR_FORM_ID with your Formspree form ID (or point action at any form service).
            Until you do, the form opens the visitor's email app with the message filled in. -->
       <form class="form" id="contact-form" action="https://formspree.io/f/mvkgayvr" method="POST">
+        <input type="hidden" name="_next" value="https://flatwaterresearch.com/?sent=1#contact">
         <h3>Send a message</h3>
         <div class="field">
           <label for="f-name">Name</label>
@@ -608,32 +609,20 @@
   (function () {
     var y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
+  })();
+</script>
 
-    // Contact form: send through the form service once it is set up;
-    // until then, open the visitor's email app with the message filled in.
-    var form = document.getElementById('contact-form');
-    if (form) {
+<script>
+  // If the page loaded with ?sent=1 in the address bar, Formspree just redirected
+  // back here after a successful contact-form submission, so show a thank-you
+  // message instead of the empty status line.
+  (function () {
+    if (window.location.search.indexOf('sent=1') !== -1) {
       var status = document.getElementById('form-status');
-      var MAILTO = 'fellowcampers@gmail.com';
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var data = new FormData(form);
-        if (data.get('_gotcha')) return;
-
-        status.className = 'form-status is-visible';
-        status.textContent = 'Sending message...';
-        fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-          .then(function (r) {
-            if (!r.ok) throw new Error('Request failed');
-            form.reset();
-            status.className = 'form-status is-visible is-success';
-            status.textContent = 'Message sent. We will reply by email.';
-          })
-          .catch(function () {
-            status.className = 'form-status is-visible is-error';
-            status.textContent = 'Message not sent. Try again, or email ' + MAILTO + '.';
-          });
-      });
+      if (status) {
+        status.className = 'form-status is-visible is-success';
+        status.textContent = 'Message sent. We will reply by email.';
+      }
     }
   })();
 </script>
@@ -720,4 +709,10 @@
       if (phoneEl && phones.length) {
         phoneEl.innerHTML = phones.map(function (p) {
           return '<a href="tel:' + esc(p.replace(/[^\d+]/g, '')) + '">' + esc(p) + '</a>';
-   
+        }).join('<br>');
+      }
+    }).catch(function () {});
+  })();
+</script>
+</body>
+</html>
