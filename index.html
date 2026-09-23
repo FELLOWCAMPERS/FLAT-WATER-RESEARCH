@@ -94,7 +94,7 @@
   .site-nav a:hover { border-bottom-color: currentColor; }
 
   .header-president {
-    margin-left: auto; align-self: flex-start;
+    margin-left: auto; align-self: flex-start; margin-top: -1rem;
     display: inline-flex; align-items: center; gap: .6rem;
     text-decoration: none; color: #fff;
   }
@@ -610,4 +610,4 @@
     get('content/camper-photos.json').then(function (data) {
       var items = (data && data.items) || [];
       var list = document.getElementById('camper-photos-list');
-      var empty = doc
+  
