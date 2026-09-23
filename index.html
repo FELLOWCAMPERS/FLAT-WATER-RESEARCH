@@ -161,6 +161,18 @@
   .questions p { margin: 0; max-width: 34rem; }
 
   .figure { margin: 0; }
+  .mini-gallery-label {
+    margin: 0 0 .75rem; font: 400 1.1rem/1.2 var(--serif);
+    color: var(--slate); letter-spacing: -.005em;
+  }
+  .mini-gallery-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem;
+  }
+  .mini-gallery-grid img {
+    display: block; width: 100%; aspect-ratio: 1 / 1;
+    object-fit: cover; border-radius: 2px; background: var(--water);
+  }
+  .mini-gallery-grid img:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
   .figure svg { display: block; width: 100%; height: auto; border-radius: 2px; }
   .figure svg text { font-family: var(--sans); }
   .figure figcaption { max-width: 32rem; margin-top: .9rem; font-size: .92rem; color: var(--muted); }
@@ -273,8 +285,6 @@
         <li><a href="#field">In the field</a></li>
         <li><a href="#share">Share photos</a></li>
         <li><a href="#approach">Approach</a></li>
-        <li><a href="#comments">Comments</a></li>
-        <li><a href="#publications">Publications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -328,77 +338,22 @@
         </ul>
       </div>
 
-      <figure class="figure">
-        <svg viewBox="0 0 440 540" role="img" aria-labelledby="fig-title fig-desc">
-          <title id="fig-title">Temperature by depth in a lake in midsummer</title>
-          <desc id="fig-desc">A vertical cross-section of a lake in three layers. A line shows warm water near the surface, a steep drop in temperature through the middle layer, and cold water below.</desc>
-          <defs>
-            <linearGradient id="band-mid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#C9DDE2"/>
-              <stop offset="1" stop-color="#2F5D6B"/>
-            </linearGradient>
-          </defs>
-          <rect width="440" height="150" fill="#C9DDE2"/>
-          <rect y="150" width="440" height="150" fill="url(#band-mid)"/>
-          <rect y="300" width="440" height="240" fill="#2F5D6B"/>
-
-          <g fill="#0F2B38">
-            <text x="20" y="62" font-size="17" font-weight="600">Warm surface layer</text>
-            <text x="20" y="84" font-size="14">Mixed by wind, warmed by sun</text>
-            <text x="20" y="184" font-size="17" font-weight="600">Thermocline</text>
-            <text x="20" y="206" font-size="14">Temperature drops fast</text>
-          </g>
-          <g fill="#E4EAEC">
-            <text x="420" y="420" font-size="17" font-weight="600" text-anchor="end">Cold deep layer</text>
-            <text x="420" y="442" font-size="14" text-anchor="end">Little exchange with the surface</text>
-            <text x="20" y="526" font-size="13">colder</text>
-            <text x="220" y="526" font-size="13" text-anchor="middle">Temperature</text>
-            <text x="420" y="526" font-size="13" text-anchor="end">warmer</text>
-          </g>
-
-          <path d="M338 24 L337 128 C335 176 296 202 250 224 C196 250 146 262 128 302 C118 334 112 420 108 500"
-                fill="none" stroke="#E4EAEC" stroke-width="8" stroke-linecap="round" opacity=".9"/>
-          <path d="M338 24 L337 128 C335 176 296 202 250 224 C196 250 146 262 128 302 C118 334 112 420 108 500"
-                fill="none" stroke="#E8622C" stroke-width="3.5" stroke-linecap="round"/>
-        </svg>
-        <figcaption>A lake in midsummer (illustrative). Temperature falls sharply through the thermocline, which limits mixing between the warm and cold layers.</figcaption>
-      </figure>
+      <div class="mini-gallery" aria-label="Where the work happens">
+        <p class="mini-gallery-label">Where the work happens</p>
+        <div class="mini-gallery-grid">
+          <img src="images/ski-wide-1.jpg" alt="A skier on calm, glassy water behind a boat, hills reflected in the lake" loading="lazy">
+          <img src="images/ski-action.jpg" alt="A skier carving hard, throwing a large spray of water, seen from the boat" loading="lazy">
+          <img src="images/ski-wide-2.jpg" alt="A skier behind a boat on a calm lake under a partly clouded sky" loading="lazy">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== In the field =====
-       These four images are drawn illustrations so the page works out of the box.
-       To use your own photos: create an /images folder next to index.html, then replace
-       each <svg> ... </svg> inside a .frame with something like:
-       <img src="images/buoy.jpg" alt="Describe the photo" width="1200" height="800" loading="lazy">
-       Update each figcaption to match. -->
+  <!-- ===== In the field ===== -->
   <section class="band tint" id="field" aria-labelledby="field-title">
     <div class="wrap">
       <h2 id="field-title">Where the work happens</h2>
       <p class="section-intro">Most of our data starts as a person, a boat or a buoy on the water.</p>
-
-      <div class="gallery">
-        <figure class="shot shot-wide">
-          <div class="frame">
-            <img src="images/ski-wide-1.jpg" alt="A skier on calm, glassy water behind a boat, hills reflected in the lake" loading="lazy">
-          </div>
-          <figcaption>Early light, flat water: the conditions we track for and chase.</figcaption>
-        </figure>
-
-        <figure class="shot shot-narrow">
-          <div class="frame">
-            <img src="images/ski-action.jpg" alt="A skier carving hard, throwing a large spray of water, seen from the boat" loading="lazy">
-          </div>
-          <figcaption>What good water actually lets you do with it.</figcaption>
-        </figure>
-
-        <figure class="shot shot-wide">
-          <div class="frame">
-            <img src="images/ski-wide-2.jpg" alt="A skier behind a boat on a calm lake under a partly clouded sky" loading="lazy">
-          </div>
-          <figcaption>No other boats, no chop: an open lake on a weekday morning.</figcaption>
-        </figure>
-      </div>
 
       <!-- Share-photos: a plain mailto card rather than an on-site upload form.
            Photos come in by email to fellowcampers@gmail.com, and the site owner
@@ -434,7 +389,7 @@
       <h2 id="approach-title">How we work</h2>
       <div class="principles">
         <div>
-          <h3>We analyze daily conditions.</h3>
+          <h3>We analyze daily conditions. (very exhaustive work)</h3>
           <p>Buoys in the water and people on the shore record conditions over full seasons, not just a handful of mornings.</p>
         </div>
         <div>
@@ -442,34 +397,10 @@
           <p>Conditions data and methods are shared openly so skiers, clubs and marinas can check it and put it to use.</p>
         </div>
         <div>
-          <h3>We work with the people on the water.</h3>
+          <h3>We work with the people on the water. (very important)</h3>
           <p>Our questions come from skiers, boat clubs, marinas and lake associations who are out there watching conditions every day.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== Comments =====
-       Populated from content/testimonials.json via /admin. Add real comments
-       there (with the speaker's permission); the section hides itself if
-       the list is empty rather than showing made-up quotes. -->
-  <section class="band" id="comments" aria-labelledby="comments-title">
-    <div class="wrap">
-      <h2 id="comments-title">What people say about our work</h2>
-      <div class="voices" id="comments-list"></div>
-      <p class="form-note" id="comments-empty">No comments published yet.</p>
-      <p class="voices-note">Have something to say about our work? <a href="#contact">Send us a comment.</a></p>
-    </div>
-  </section>
-
-  <!-- ===== Publications =====
-       Populated from content/publications.json via /admin. The section hides
-       itself if the list is empty rather than showing placeholder titles. -->
-  <section class="band tint" id="publications" aria-labelledby="pubs-title">
-    <div class="wrap">
-      <h2 id="pubs-title">Recent publications</h2>
-      <ul class="pubs" id="publications-list"></ul>
-      <p class="form-note" id="publications-empty">No publications listed yet.</p>
     </div>
   </section>
 
@@ -595,37 +526,6 @@
           '<figcaption>' + credit + esc(item.caption || '') + '</figcaption></figure>';
       }).join('');
     }).catch(function () { /* leave the "no photos yet" message showing */ });
-
-    // Comments
-    get('content/testimonials.json').then(function (data) {
-      var items = (data && data.items) || [];
-      var section = document.getElementById('comments');
-      var list = document.getElementById('comments-list');
-      var empty = document.getElementById('comments-empty');
-      if (!list || !section) return;
-      if (!items.length) { if (empty) empty.hidden = false; return; }
-      if (empty) empty.hidden = true;
-      list.innerHTML = items.map(function (item, i) {
-        var wrap = i === 0 ? 'quote quote-main' : 'quote';
-        return '<figure class="' + wrap + '"><blockquote><p>\u201C' + esc(item.quote) + '\u201D</p></blockquote>' +
-          '<figcaption>' + esc(item.author) + '</figcaption></figure>';
-      }).join('');
-    }).catch(function () {});
-
-    // Publications
-    get('content/publications.json').then(function (data) {
-      var items = (data && data.items) || [];
-      var list = document.getElementById('publications-list');
-      var empty = document.getElementById('publications-empty');
-      if (!list) return;
-      if (!items.length) { if (empty) empty.hidden = false; return; }
-      if (empty) empty.hidden = true;
-      list.innerHTML = items.map(function (item) {
-        var title = item.link ? '<a href="' + esc(item.link) + '">' + esc(item.title) + '</a>' : esc(item.title);
-        return '<li><span class="year">' + esc(item.year) + '</span><div><h3>' + title +
-          '</h3><p class="kind">' + esc(item.kind) + '</p></div></li>';
-      }).join('');
-    }).catch(function () {});
 
     // Contact info
     get('content/settings.json').then(function (data) {
