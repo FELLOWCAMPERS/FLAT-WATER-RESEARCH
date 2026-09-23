@@ -93,6 +93,21 @@
   }
   .site-nav a:hover { border-bottom-color: currentColor; }
 
+  .hero-president {
+    position: absolute; top: 0; right: 0;
+    display: inline-flex; align-items: center; gap: .6rem;
+    text-decoration: none; color: #fff; z-index: 2;
+  }
+  .hero-president img {
+    width: 4.25rem; height: 4.25rem; border-radius: 50%;
+    object-fit: cover; border: 2px solid rgba(255,255,255,.85);
+    box-shadow: 0 1px 8px rgba(0,0,0,.4);
+  }
+  .hero-president span {
+    font-size: 1rem; line-height: 1.25;
+    text-shadow: 0 1px 10px rgba(0,0,0,.5);
+  }
+
   /* ---------- Hero: full-bleed photo ---------- */
   .hero {
     position: relative;
@@ -249,18 +264,6 @@
   .details dl { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: .8rem 1.5rem; margin: 0; }
   .details dt { font-weight: 600; }
   .details dd { margin: 0; }
-  .contact-details-row {
-    display: flex; flex-wrap: wrap; align-items: flex-start;
-    gap: 1.5rem 2rem;
-  }
-  .president-photo { margin: 0; flex: none; }
-  .president-photo img {
-    display: block; width: 5.5rem; height: 5.5rem;
-    object-fit: cover; border-radius: 3px;
-  }
-  .president-photo figcaption {
-    margin-top: .5rem; font-size: .85rem; line-height: 1.35; color: var(--muted);
-  }
 
   .form {
     display: grid; gap: 1.1rem;
@@ -312,7 +315,6 @@
       <ul>
         <li><a href="#research">Research</a></li>
         <li><a href="#findings">Findings</a></li>
-        <li><a href="#share">Share photos</a></li>
         <li><a href="#approach">Approach</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -326,6 +328,10 @@
        to change the photo; keep it roughly landscape so the crop looks right. -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
+      <a class="hero-president" href="#contact" aria-label="Tom Blakeman, President">
+        <img src="images/president-headshot.jpg" alt="Tom Blakeman, President">
+        <span>Tom Blakeman<br>President</span>
+      </a>
       <h1 class="display" id="hero-title">
         <span>The search</span>
         <span>continues.....</span>
@@ -428,7 +434,7 @@
         <div>
           <div class="video-frame">
             <video controls preload="metadata" style="width:100%;height:100%;">
-              <source src="videos/very-flat.mp4" type="video/mp4">
+              <source src="VIDEOS/very-flat.mp4" type="video/mp4">
             </video>
           </div>
           <p class="video-caption">Glass-calm water &mdash; exactly the kind of morning we're tracking for.</p>
@@ -466,20 +472,14 @@
       <div>
         <h2 id="contact-title">Work with us</h2>
         <p class="section-intro">Questions, comments and ideas for working together are all welcome. We collaborate with ski clubs, marinas, lake associations and universities, and we welcome researchers studying water sports and lake conditions.</p>
-        <div class="contact-details-row">
-          <address class="details">
-            <dl>
-              <dt>Email</dt>
-              <dd id="contact-emails"><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a><br><a href="mailto:tblakeman1960@gmail.com">tblakeman1960@gmail.com</a></dd>
-              <dt>Phone</dt>
-              <dd id="contact-phones"><a href="tel:+14034668826">403&nbsp;466-8826</a><br><a href="tel:+12622698003">262&nbsp;269-8003</a></dd>
-            </dl>
-          </address>
-          <figure class="president-photo">
-            <img src="images/president-headshot.jpg" alt="Tom Blakeman, President of Flatwater Research Institute" loading="lazy">
-            <figcaption>Tom Blakeman<br>President</figcaption>
-          </figure>
-        </div>
+        <address class="details">
+          <dl>
+            <dt>Email</dt>
+            <dd id="contact-emails"><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a><br><a href="mailto:tblakeman1960@gmail.com">tblakeman1960@gmail.com</a></dd>
+            <dt>Phone</dt>
+            <dd id="contact-phones"><a href="tel:+14034668826">403&nbsp;466-8826</a><br><a href="tel:+12622698003">262&nbsp;269-8003</a></dd>
+          </dl>
+        </address>
       </div>
 
       <!-- Form: replace YOUR_FORM_ID with your Formspree form ID (or point action at any form service).
