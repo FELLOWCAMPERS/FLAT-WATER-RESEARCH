@@ -94,7 +94,7 @@
   .site-nav a:hover { border-bottom-color: currentColor; }
 
   .header-president {
-    margin-left: auto; margin-top: -.4rem;
+    margin-left: auto; align-self: flex-start;
     display: inline-flex; align-items: center; gap: .6rem;
     text-decoration: none; color: #fff;
   }
@@ -104,8 +104,22 @@
     box-shadow: 0 1px 8px rgba(0,0,0,.4);
   }
   .header-president span {
-    font-size: 1rem; line-height: 1.25;
+    font-size: .98rem; font-weight: 500; line-height: 1.25;
     text-shadow: 0 1px 10px rgba(0,0,0,.5);
+  }
+  #president-photo-trigger { cursor: zoom-in; }
+
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: rgba(9,20,26,.9);
+    align-items: center; justify-content: center;
+    padding: 2rem; cursor: zoom-out;
+  }
+  .lightbox.is-open { display: flex; }
+  .lightbox img {
+    max-width: min(90vw, 40rem); max-height: 85vh;
+    width: 100%; height: auto; border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.5);
   }
 
   /* ---------- Hero: full-bleed photo ---------- */
@@ -320,11 +334,17 @@
       </ul>
     </nav>
     <a class="header-president" href="#contact" aria-label="Tom Blakeman, President">
-      <img src="images/president-headshot.jpg" alt="Tom Blakeman, President">
+      <img id="president-photo-trigger" src="images/president-headshot.jpg" alt="Tom Blakeman, President &mdash; click to enlarge">
       <span>Tom Blakeman<br>President</span>
     </a>
   </div>
 </header>
+
+<!-- Photo lightbox: hidden until president-photo-trigger is clicked. Click
+     anywhere on the overlay (or press Escape) to close it again. -->
+<div class="lightbox" id="photo-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo of Tom Blakeman">
+  <img src="images/president-headshot.jpg" alt="Tom Blakeman, President">
+</div>
 
 <main id="main">
 
@@ -532,6 +552,24 @@
   (function () {
     var y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
+
+    // Photo lightbox: clicking Tom's small header photo shows a large version;
+    // clicking the overlay (or pressing Escape) closes it again.
+    var trigger = document.getElementById('president-photo-trigger');
+    var lightbox = document.getElementById('photo-lightbox');
+    if (trigger && lightbox) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        lightbox.classList.add('is-open');
+      });
+      lightbox.addEventListener('click', function () {
+        lightbox.classList.remove('is-open');
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') lightbox.classList.remove('is-open');
+      });
+    }
   })();
 </script>
 
@@ -572,37 +610,4 @@
     get('content/camper-photos.json').then(function (data) {
       var items = (data && data.items) || [];
       var list = document.getElementById('camper-photos-list');
-      var empty = document.getElementById('camper-photos-empty');
-      var heading = document.querySelector('.camper-photos-heading');
-      if (!list) return;
-      if (!items.length) { if (empty) empty.hidden = false; return; }
-      if (empty) empty.hidden = true;
-      if (heading) heading.hidden = false;
-      list.innerHTML = items.map(function (item, i) {
-        var cls = i % 3 === 0 ? 'shot shot-wide' : 'shot shot-narrow';
-        var credit = item.submitted_by ? esc(item.submitted_by) + ' — ' : '';
-        return '<figure class="' + cls + '"><div class="frame"><img src="' + esc(item.image) +
-          '" alt="' + esc(item.caption || '') + '" loading="lazy"></div>' +
-          '<figcaption>' + credit + esc(item.caption || '') + '</figcaption></figure>';
-      }).join('');
-    }).catch(function () { /* leave the "no photos yet" message showing */ });
-
-    // Contact info
-    get('content/settings.json').then(function (data) {
-      var emails = (data && data.emails) || [];
-      var phones = (data && data.phones) || [];
-      var emailEl = document.getElementById('contact-emails');
-      var phoneEl = document.getElementById('contact-phones');
-      if (emailEl && emails.length) {
-        emailEl.innerHTML = emails.map(function (e) {
-          return '<a href="mailto:' + esc(e) + '">' + esc(e) + '</a>';
-        }).join('<br>');
-      }
-      if (phoneEl && phones.length) {
-        phoneEl.innerHTML = phones.map(function (p) {
-          return '<a href="tel:' + esc(p.replace(/[^\d+]/g, '')) + '">' + esc(p) + '</a>';
-        }).join('<br>');
-      }
-    }).catch(function () {});
-  })();
-</script>
+      var empty = doc
