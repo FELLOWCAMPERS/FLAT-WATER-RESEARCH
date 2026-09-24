@@ -281,6 +281,12 @@
   .quote-side { display: grid; gap: 2rem; }
   .quote-side blockquote p { font: 400 1.2rem/1.5 var(--serif); }
   .voices-note { margin: 2.5rem 0 0; }
+  #dead-end-comment-note { font-weight: 600; color: var(--buoy); }
+  #dead-end-comment-note.is-flashing { animation: note-flash .4s ease-in-out 3; }
+  @keyframes note-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    #dead-end-comment-note.is-flashing { animation: none; }
+  }
 
   /* Contact */
   .contact { background: var(--sky-top); }
@@ -607,13 +613,22 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.classList.remove('is-open'); });
   }
 
-  // "Send us a comment" jumps to the contact form and picks the comment topic
+  // "Send us a comment" is a joke dead end: each click flashes "(click again)"
   var commentLink = document.getElementById('dead-end-comment');
-  if (commentLink) {
-    commentLink.href = '#contact';
-    commentLink.addEventListener('click', function () {
-      var topic = document.getElementById('f-topic');
-      if (topic) topic.value = 'Comment on our work';
+  var commentNote = document.getElementById('dead-end-comment-note');
+  var noteTimer;
+  if (commentLink && commentNote) {
+    commentLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      clearTimeout(noteTimer);
+      commentNote.textContent = ' (click again)';
+      commentNote.classList.remove('is-flashing');
+      void commentNote.offsetWidth; // restart the flash on every click
+      commentNote.classList.add('is-flashing');
+      noteTimer = setTimeout(function () {
+        commentNote.textContent = '';
+        commentNote.classList.remove('is-flashing');
+      }, 2000);
     });
   }
 })();
