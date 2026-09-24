@@ -94,12 +94,8 @@
   .site-nav a:hover { border-bottom-color: currentColor; }
 
   .header-president {
-    margin-left: auto; align-self: flex-start; margin-top: -3rem;
     display: inline-flex; align-items: center; gap: .6rem;
     text-decoration: none; color: #fff;
-  }
-  @media (min-width: 60rem) {
-    .header-president { margin-top: -.5rem; }
   }
   .header-president img {
     width: 3.3rem; height: 3.3rem; border-radius: 50%;
@@ -328,6 +324,10 @@
       </svg>
       Flatwater Research Institute
     </a>
+    <a class="header-president" href="#contact" aria-label="Tom Blakeman, President">
+      <img id="president-photo-trigger" src="images/president-headshot.jpg" alt="Tom Blakeman, President &mdash; click to enlarge">
+      <span>Tom Blakeman<br>President</span>
+    </a>
     <nav class="site-nav" aria-label="Main">
       <ul>
         <li><a href="#research">Research</a></li>
@@ -336,10 +336,6 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <a class="header-president" href="#contact" aria-label="Tom Blakeman, President">
-      <img id="president-photo-trigger" src="images/president-headshot.jpg" alt="Tom Blakeman, President &mdash; click to enlarge">
-      <span>Tom Blakeman<br>President</span>
-    </a>
   </div>
 </header>
 
@@ -551,4 +547,9 @@
   </div>
 </footer>
 
-<scri
+<script>
+  (function () {
+    var y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+
+    // Photo lightbox: cli
