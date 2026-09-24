@@ -150,7 +150,7 @@
 
   .intro {
     display: grid; gap: 1.75rem;
-    padding-block: clamp(1.25rem, 3vw, 2rem) clamp(2.5rem, 5vw, 4rem);
+    padding-block: clamp(1rem, 2vw, 1.5rem) clamp(1.75rem, 3.5vw, 2.75rem);
     background: var(--mist);
   }
   .lead {
@@ -172,12 +172,12 @@
   .btn-light:hover { background: #fff; border-color: #fff; }
 
   /* ---------- Sections ---------- */
-  .band { padding-block: clamp(2.75rem, 6vw, 5rem); }
+  .band { padding-block: clamp(2rem, 4.5vw, 3.75rem); }
   h2 {
     margin: 0 0 1.25rem; max-width: 20ch;
     font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--serif); letter-spacing: -.015em;
   }
-  .section-intro { max-width: 36rem; margin: 0 0 2.5rem; }
+  .section-intro { max-width: 36rem; margin: 0 0 1.5rem; }
 
   .split { display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
   @media (min-width: 60rem) {
@@ -207,7 +207,7 @@
 
   /* Findings / videos */
   .video-grid {
-    display: grid; gap: 1.75rem; margin-top: 2.5rem;
+    display: grid; gap: 1.25rem; margin-top: 1.5rem;
     grid-template-columns: minmax(0, 1fr);
   }
   @media (min-width: 48rem) {
@@ -252,7 +252,7 @@
   .tint { background: var(--tint); }
 
   /* Gallery */
-  .gallery { display: grid; gap: 2rem 1.25rem; grid-template-columns: minmax(0, 1fr); margin-top: 2.5rem; }
+  .gallery { display: grid; gap: 1.25rem 1rem; grid-template-columns: minmax(0, 1fr); margin-top: 1.5rem; }
   .shot { margin: 0; }
   .shot .frame { height: clamp(13rem, 55vw, 16rem); overflow: hidden; border-radius: 2px; background: var(--water); }
   .shot .frame svg, .shot .frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -265,7 +265,7 @@
   }
 
   /* Comments */
-  .voices { display: grid; gap: 3rem clamp(2rem, 6vw, 5rem); margin-top: 2.5rem; }
+  .voices { display: grid; gap: 2rem clamp(1.5rem, 5vw, 3.5rem); margin-top: 1.5rem; }
   @media (min-width: 60rem) {
     .voices { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: start; }
   }
@@ -312,7 +312,7 @@
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .form-note { margin: 0; font-size: .88rem; color: var(--muted); }
   .field input[type="file"] { padding: .5rem; background: #fff; }
-  .share-form { max-width: 34rem; margin-top: 2.5rem; }
+  .share-form { max-width: 34rem; margin-top: 1.5rem; }
 
   .site-footer { background: var(--depth); color: var(--mist); padding-block: 2rem; font-size: .92rem; }
   .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
@@ -454,7 +454,7 @@
            similar, since file uploads aren't on their free tier) — ask your web
            person to switch this card back to a file-upload form if you go that
            route later. -->
-      <div class="form share-form" style="margin-top:2.5rem;">
+      <div class="form share-form" style="margin-top:1.5rem;">
         <h3 id="share-title">Share a photo</h3>
         <p class="form-note">Got a shot from the water? Email us at <a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> with your photo and comments, and we'll add our favorites below.</p>
         <p class="actions" style="margin-top:.5rem;">
@@ -467,8 +467,7 @@
            you one; it appears here once you publish, and disappears if you delete
            it there. This div starts empty until you add the first one. -->
       <h3 class="camper-photos-heading" hidden>Camper photos</h3>
-      <div class="gallery" id="camper-photos-list" style="margin-top:2.5rem;"></div>
-      <p class="form-note" id="camper-photos-empty">No camper photos yet — the first ones you add in the editor will show up here.</p>
+      <div class="gallery" id="camper-photos-list" style="margin-top:1.5rem;"></div>
     </div>
   </section>
 
@@ -552,4 +551,6 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>&copy; <span id="year">2026</span> Flatwater Research Institute</p>
-    <p><a href="mailto:fellowcampers@gmail.com">fellowcampe
+    <p><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> &nbsp;&nbsp; <a href="tel:+14034668826">403 466-8826</a></p>
+    <p><a href="#top">Back to top</a></p>
+  </
