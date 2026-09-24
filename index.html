@@ -493,7 +493,6 @@
           <h3>We do our best to keep the public informed.</h3>
           <p>Conditions data and methods are shared openly so skiers, clubs and marinas can check it and put it to use.</p>
           <ul class="fine-print">
-            <li>(findings subject to peer review at the marina bar)</li>
             <li>(results may vary, especially near the dock)</li>
             <li>(our sample size is "everyone we could flag down")</li>
             <li>(data integrity: best effort, boat-side)</li>
@@ -507,7 +506,7 @@
           <ul class="fine-print">
             <li>(a rigorously unscientific advisory board)</li>
             <li>(our control group has strong opinions and boats)</li>
-            <li>(field researchers: everyone with a cooler)</li>
+            <li>(field researchers: whoever is there)</li>
             <li>(primary data source: yelling across the lake)</li>
             <li>(institutional review board: whoever's driving)</li>
           </ul>
@@ -686,15 +685,7 @@
   // Contact info (the emails and phones typed above stay if this file is missing)
   get('content/settings.json').then(function (data) {
     var emails = (data && data.emails) || [];
-    var phones = (data && data.phones) || [];
-    var emailEl = document.getElementById('contact-emails');
-    var phoneEl = document.getElementById('contact-phones');
-    if (emailEl && emails.length) {
-      emailEl.innerHTML = emails.map(function (e) {
-        return '<a href="mailto:' + esc(e) + '">' + esc(e) + '</a>';
-      }).join('<br>');
-    }
-    if (phoneEl && phones.length) {
+    var phones = (aes.length) {
       phoneEl.innerHTML = phones.map(function (p) {
         var digits = String(p).replace(/\D/g, '');
         var tel = digits.length === 10 ? '+1' + digits : '+' + digits;
