@@ -221,6 +221,11 @@
     position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
   }
   .video-caption { margin: .6rem 0 0; font-size: .92rem; color: var(--muted); }
+  .video-caption-large {
+    margin: 0 0 .75rem; max-width: 20ch;
+    font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--serif);
+    letter-spacing: -.015em; color: var(--depth);
+  }
   .figure svg { display: block; width: 100%; height: auto; border-radius: 2px; }
   .figure svg text { font-family: var(--sans); }
   .figure figcaption { max-width: 32rem; margin-top: .9rem; font-size: .92rem; color: var(--muted); }
@@ -430,12 +435,12 @@
 
       <div class="video-grid">
         <div>
+          <p class="video-caption-large">(very scientific analysis)</p>
           <div class="video-frame">
             <video controls preload="metadata" style="width:100%;height:100%;">
               <source src="VIDEOS/very-flat.mp4" type="video/mp4">
             </video>
           </div>
-          <p class="video-caption">(very scientific analysis)</p>
         </div>
       </div>
 
@@ -547,11 +552,4 @@
 <footer class="site-footer">
   <div class="wrap">
     <p>&copy; <span id="year">2026</span> Flatwater Research Institute</p>
-    <p><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> &nbsp;&nbsp; <a href="tel:+14034668826">403 466-8826</a></p>
-    <p><a href="#top">Back to top</a></p>
-  </div>
-</footer>
-
-<script>
-  (function () {
-    var y = document
+    <p><a href="mailto:fellowcampers@gmail.com">fellowcampe
