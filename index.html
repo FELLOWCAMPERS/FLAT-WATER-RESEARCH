@@ -238,6 +238,10 @@
   .principles div { padding-top: 1.25rem; border-top: 1px solid rgba(228, 234, 236, .35); }
   .principles h3 { margin: 0 0 .6rem; font: 400 1.55rem/1.2 var(--serif); }
   .principles p { margin: 0; color: #C7D5DA; }
+  .fine-print {
+    margin: .9rem 0 0; padding: 0; list-style: none;
+    font-size: .85rem; line-height: 1.6; color: #8FA6AE;
+  }
 
   .pubs { margin: 2.5rem 0 0; padding: 0; list-style: none; }
   .pubs li {
@@ -479,14 +483,37 @@
         <div>
           <h3>We analyze daily conditions. (very exhaustive work)</h3>
           <p>Buoys in the water and people on the shore record conditions over full seasons, not just a handful of mornings.</p>
+          <ul class="fine-print">
+            <li>(rigorously peer-reviewed by whoever's on the dock)</li>
+            <li>(double-blind study: nobody knows what they're doing, twice)</li>
+            <li>(margin of error: entirely dependent on wind)</li>
+            <li>(statistically significant, allegedly)</li>
+            <li>(control group: the guy who refuses to check the forecast)</li>
+            <li>(published in the Journal of Just Trust Us)</li>
+          </ul>
         </div>
         <div>
           <h3>We do our best to keep the public informed.</h3>
           <p>Conditions data and methods are shared openly so skiers, clubs and marinas can check it and put it to use.</p>
+          <ul class="fine-print">
+            <li>(findings subject to peer review at the marina bar)</li>
+            <li>(results may vary, especially near the dock)</li>
+            <li>(our sample size is "everyone we could flag down")</li>
+            <li>(data integrity: best effort, boat-side)</li>
+            <li>(transparency policy: we tell you everything, eventually)</li>
+            <li>(methodology available upon request, or upon asking Tom)</li>
+          </ul>
         </div>
         <div>
           <h3>We work with the people on the water. (very important)</h3>
           <p>Our questions come from skiers, boat clubs, marinas and lake associations who are out there watching conditions every day.</p>
+          <ul class="fine-print">
+            <li>(a rigorously unscientific advisory board)</li>
+            <li>(our control group has strong opinions and boats)</li>
+            <li>(field researchers: everyone with a cooler)</li>
+            <li>(primary data source: yelling across the lake)</li>
+            <li>(institutional review board: whoever's driving)</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -517,40 +544,4 @@
         <h3>Send a message</h3>
         <div class="field">
           <label for="f-name">Name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="f-topic">Topic</label>
-          <select id="f-topic" name="topic">
-            <option>General question</option>
-            <option>Comment on our work</option>
-            <option>Collaboration or study with us</option>
-            <option>Media</option>
-            <option>Data request</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-message">Message</label>
-          <textarea id="f-message" name="message" required></textarea>
-        </div>
-        <div class="hp" aria-hidden="true">
-          <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
-        </div>
-        <button class="btn" type="submit">Send message</button>
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p>&copy; <span id="year">2026</span> Flatwater Research Institute</p>
-    <p><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> &nbsp;&nbsp; <a href="tel:+14034668826">403 466-8826</a></p>
-    <p><a href="#top">Back to top</a></p>
-  </
+          <input id="f
