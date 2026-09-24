@@ -98,6 +98,9 @@
     display: inline-flex; align-items: center; gap: .6rem;
     text-decoration: none; color: #fff;
   }
+  @media (min-width: 60rem) {
+    .header-president { margin-top: -.5rem; }
+  }
   .header-president img {
     width: 3.3rem; height: 3.3rem; border-radius: 50%;
     object-fit: cover; border: 2px solid rgba(255,255,255,.85);
@@ -548,66 +551,4 @@
   </div>
 </footer>
 
-<script>
-  (function () {
-    var y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-
-    // Photo lightbox: clicking Tom's small header photo shows a large version;
-    // clicking the overlay (or pressing Escape) closes it again.
-    var trigger = document.getElementById('president-photo-trigger');
-    var lightbox = document.getElementById('photo-lightbox');
-    if (trigger && lightbox) {
-      trigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        lightbox.classList.add('is-open');
-      });
-      lightbox.addEventListener('click', function () {
-        lightbox.classList.remove('is-open');
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') lightbox.classList.remove('is-open');
-      });
-    }
-  })();
-</script>
-
-<script>
-  // If the page loaded with ?sent=1 in the address bar, Formspree just redirected
-  // back here after a successful contact-form submission, so show a thank-you
-  // message instead of the empty status line.
-  (function () {
-    if (window.location.search.indexOf('sent=1') !== -1) {
-      var status = document.getElementById('form-status');
-      if (status) {
-        status.className = 'form-status is-visible is-success';
-        status.textContent = 'Message sent. We will reply by email.';
-      }
-    }
-  })();
-</script>
-
-<!-- Content loader: reads the JSON files that /admin (the editor) writes to,
-     and fills in the camper photos, comments, publications and contact info.
-     This only works once the site is served over http(s) — e.g. after it's
-     deployed to Cloudflare Pages — not when the file is just double-clicked. -->
-<script>
-  (function () {
-    function esc(s) {
-      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-      });
-    }
-    function get(path) {
-      return fetch(path + '?v=' + Date.now()).then(function (r) {
-        if (!r.ok) throw new Error(path + ' failed');
-        return r.json();
-      });
-    }
-
-    // Camper photos
-    get('content/camper-photos.json').then(function (data) {
-      var items = (data && data.items) || [];
-      var list = document.getElementById('camper-photos-list');
-  
+<scri
