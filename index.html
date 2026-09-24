@@ -538,11 +538,38 @@
         </address>
       </div>
 
-      <div class="form">
-        <h3>Send us a note</h3>
-        <p class="form-note">Email is the quickest way to reach us. Tell us who you are and what you have in mind, and we'll get back to you.</p>
-        <p class="actions"><a class="btn" href="mailto:fellowcampers@gmail.com?subject=Flatwater%20Research%20Institute">Email us</a></p>
-      </div>
+      <!-- Contact form: sends through Formspree, then returns here with ?sent=1 -->
+      <form class="form" id="contact-form" action="https://formspree.io/f/mvkgayvr" method="POST">
+        <input type="hidden" name="_next" value="https://flatwaterresearch.com/?sent=1#contact">
+        <h3>Send a message</h3>
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-topic">Topic</label>
+          <select id="f-topic" name="topic">
+            <option>General question</option>
+            <option>Comment on our work</option>
+            <option>Collaboration or study with us</option>
+            <option>Media</option>
+            <option>Data request</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" required></textarea>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <button class="btn" type="submit">Send message</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -550,15 +577,117 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>&copy; 2026 Flatwater Research Institute</p>
+    <p>&copy; <span id="year">2026</span> Flatwater Research Institute</p>
+    <p><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> &nbsp;&nbsp; <a href="tel:+14034668826">403 466-8826</a></p>
     <p><a href="#top">Back to top</a></p>
   </div>
 </footer>
 
 <script>
 (function () {
+  // Footer year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // Thank-you message after Formspree sends the visitor back with ?sent=1
+  if (window.location.search.indexOf('sent=1') !== -1) {
+    var status = document.getElementById('form-status');
+    if (status) {
+      status.className = 'form-status is-visible is-success';
+      status.textContent = 'Message sent. We will reply by email.';
+    }
+  }
+
   // President photo lightbox
   var trigger = document.getElementById('president-photo-trigger');
   var box = document.getElementById('photo-lightbox');
   if (trigger && box) {
-    trigger.addEventListener('clic
+    trigger.addEventListener('click', function (e) { e.preventDefault(); box.classList.add('is-open'); });
+    box.addEventListener('click', function () { box.classList.remove('is-open'); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.classList.remove('is-open'); });
+  }
+
+  // "Send us a comment" jumps to the contact form and picks the comment topic
+  var commentLink = document.getElementById('dead-end-comment');
+  if (commentLink) {
+    commentLink.href = '#contact';
+    commentLink.addEventListener('click', function () {
+      var topic = document.getElementById('f-topic');
+      if (topic) topic.value = 'Comment on our work';
+    });
+  }
+})();
+</script>
+
+<!-- Content loader: reads the JSON files that /admin writes to. Only works
+     once the site is served over http(s), e.g. on Cloudflare Pages. -->
+<script>
+(function () {
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function get(path) {
+    return fetch(path + '?v=' + Date.now()).then(function (r) {
+      if (!r.ok) throw new Error(path + ' failed');
+      return r.json();
+    });
+  }
+
+  // Camper photos
+  get('content/camper-photos.json').then(function (data) {
+    var items = (data && data.items) || [];
+    var list = document.getElementById('camper-photos-list');
+    var heading = document.querySelector('.camper-photos-heading');
+    if (!list || !items.length) return;
+    if (heading) heading.hidden = false;
+    list.innerHTML = items.map(function (item, i) {
+      var cls = i % 3 === 0 ? 'shot shot-wide' : 'shot shot-narrow';
+      var credit = item.submitted_by ? esc(item.submitted_by) + ' \u2014 ' : '';
+      return '<figure class="' + cls + '"><div class="frame"><img src="' + esc(item.image) +
+        '" alt="' + esc(item.caption || 'Camper photo') + '" loading="lazy"></div>' +
+        '<figcaption>' + credit + esc(item.caption || '') + '</figcaption></figure>';
+    }).join('');
+  }).catch(function () {});
+
+  // Comments
+  get('content/testimonials.json').then(function (data) {
+    var items = (data && data.items) || [];
+    var list = document.getElementById('comments-list');
+    var empty = document.getElementById('comments-empty');
+    if (!list) return;
+    if (!items.length) { if (empty) empty.hidden = false; return; }
+    list.innerHTML = items.map(function (item, i) {
+      var wrap = i === 0 ? 'quote quote-main' : 'quote';
+      return '<figure class="' + wrap + '"><blockquote><p>\u201C' + esc(item.quote) + '\u201D</p></blockquote>' +
+        '<figcaption>' + esc(item.author) + '</figcaption></figure>';
+    }).join('');
+  }).catch(function () {
+    var empty = document.getElementById('comments-empty');
+    if (empty) empty.hidden = false;
+  });
+
+  // Contact info (the emails and phones typed above stay if this file is missing)
+  get('content/settings.json').then(function (data) {
+    var emails = (data && data.emails) || [];
+    var phones = (data && data.phones) || [];
+    var emailEl = document.getElementById('contact-emails');
+    var phoneEl = document.getElementById('contact-phones');
+    if (emailEl && emails.length) {
+      emailEl.innerHTML = emails.map(function (e) {
+        return '<a href="mailto:' + esc(e) + '">' + esc(e) + '</a>';
+      }).join('<br>');
+    }
+    if (phoneEl && phones.length) {
+      phoneEl.innerHTML = phones.map(function (p) {
+        var digits = String(p).replace(/\D/g, '');
+        var tel = digits.length === 10 ? '+1' + digits : '+' + digits;
+        return '<a href="tel:' + tel + '">' + esc(p) + '</a>';
+      }).join('<br>');
+    }
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>
