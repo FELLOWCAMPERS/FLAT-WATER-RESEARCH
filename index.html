@@ -506,7 +506,7 @@
           <ul class="fine-print">
             <li>(a rigorously unscientific advisory board)</li>
             <li>(our control group has strong opinions and boats)</li>
-            <li>(field researchers: whoever is there)</li>
+            <li>(field researchers: everyone available)</li>
             <li>(primary data source: yelling across the lake)</li>
             <li>(institutional review board: whoever's driving)</li>
           </ul>
@@ -685,7 +685,15 @@
   // Contact info (the emails and phones typed above stay if this file is missing)
   get('content/settings.json').then(function (data) {
     var emails = (data && data.emails) || [];
-    var phones = (aes.length) {
+    var phones = (data && data.phones) || [];
+    var emailEl = document.getElementById('contact-emails');
+    var phoneEl = document.getElementById('contact-phones');
+    if (emailEl && emails.length) {
+      emailEl.innerHTML = emails.map(function (e) {
+        return '<a href="mailto:' + esc(e) + '">' + esc(e) + '</a>';
+      }).join('<br>');
+    }
+    if (phoneEl && phones.length) {
       phoneEl.innerHTML = phones.map(function (p) {
         var digits = String(p).replace(/\D/g, '');
         var tel = digits.length === 10 ? '+1' + digits : '+' + digits;
