@@ -76,6 +76,9 @@
     display: flex; flex-wrap: wrap; align-items: center;
     gap: .75rem 2.5rem;
   }
+  .brand-group {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .75rem;
+  }
   .brand {
     display: inline-flex; align-items: center; gap: .7rem;
     font: 500 1.3rem/1.2 var(--serif); letter-spacing: -.005em; text-decoration: none;
@@ -317,17 +320,19 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Flatwater Research Institute, home">
-      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <path d="M8 16a8 8 0 0 1 16 0z" fill="#E8622C"/>
-        <path d="M4 16h24M8 20.5h16M12 25h8" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
-      </svg>
-      Flatwater Research Institute
-    </a>
-    <a class="header-president" href="#contact" aria-label="Tom Blakeman, President">
-      <img id="president-photo-trigger" src="images/president-headshot.jpg" alt="Tom Blakeman, President &mdash; click to enlarge">
-      <span>Tom Blakeman<br>President</span>
-    </a>
+    <div class="brand-group">
+      <a class="brand" href="#top" aria-label="Flatwater Research Institute, home">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M8 16a8 8 0 0 1 16 0z" fill="#E8622C"/>
+          <path d="M4 16h24M8 20.5h16M12 25h8" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        Flatwater Research Institute
+      </a>
+      <a class="header-president" href="#contact" aria-label="Tom Blakeman, President">
+        <img id="president-photo-trigger" src="images/president-headshot.jpg" alt="Tom Blakeman, President &mdash; click to enlarge">
+        <span>Tom Blakeman<br>President</span>
+      </a>
+    </div>
     <nav class="site-nav" aria-label="Main">
       <ul>
         <li><a href="#research">Research</a></li>
@@ -545,11 +550,4 @@
     <p><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> &nbsp;&nbsp; <a href="tel:+14034668826">403 466-8826</a></p>
     <p><a href="#top">Back to top</a></p>
   </div>
-</footer>
-
-<script>
-  (function () {
-    var y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-
-    // Photo lightbox: cli
+</footer
