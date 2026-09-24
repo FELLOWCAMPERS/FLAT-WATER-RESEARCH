@@ -347,6 +347,7 @@
         <li><a href="#research">Research</a></li>
         <li><a href="#findings">Findings</a></li>
         <li><a href="#approach">Approach</a></li>
+        <li><a href="#comments">Comments</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -519,6 +520,19 @@
     </div>
   </section>
 
+  <!-- ===== Comments =====
+       Populated from content/testimonials.json via /admin. Add real comments
+       there (with the speaker's permission); the section hides itself if
+       the list is empty rather than showing made-up quotes. -->
+  <section class="band" id="comments" aria-labelledby="comments-title">
+    <div class="wrap">
+      <h2 id="comments-title">What people say about our work</h2>
+      <div class="voices" id="comments-list"></div>
+      <p class="form-note" id="comments-empty" hidden>No comments published yet.</p>
+      <p class="voices-note">Have something to say about our work? <a href="#contact">Send us a comment.</a></p>
+    </div>
+  </section>
+
   <!-- ===== Contact =====
        No street address or hours were provided, so this section only lists the
        emails and phone numbers given. Add a "Visit" row back in if you want one. -->
@@ -531,17 +545,4 @@
           <dl>
             <dt>Email</dt>
             <dd id="contact-emails"><a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a><br><a href="mailto:tblakeman1960@gmail.com">tblakeman1960@gmail.com</a></dd>
-            <dt>Phone</dt>
-            <dd id="contact-phones"><a href="tel:+14034668826">403&nbsp;466-8826</a><br><a href="tel:+12622698003">262&nbsp;269-8003</a></dd>
-          </dl>
-        </address>
-      </div>
-
-      <!-- Form: replace YOUR_FORM_ID with your Formspree form ID (or point action at any form service).
-           Until you do, the form opens the visitor's email app with the message filled in. -->
-      <form class="form" id="contact-form" action="https://formspree.io/f/mvkgayvr" method="POST">
-        <input type="hidden" name="_next" value="https://flatwaterresearch.com/?sent=1#contact">
-        <h3>Send a message</h3>
-        <div class="field">
-          <label for="f-name">Name</label>
-          <input id="f
+         
