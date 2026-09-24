@@ -1,3 +1,6 @@
 {
-  "items": []
+  "items": [
+    { "quote": "You guys do amazing work.", "author": "Bob" },
+    { "quote": "Very informative.", "author": "Heather" }
+  ]
 }
