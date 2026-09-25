@@ -193,8 +193,8 @@
 
   .figure { margin: 0; }
   .mini-gallery-label {
-    margin: 0 0 .75rem; font: 400 1.1rem/1.2 var(--serif);
-    color: var(--slate); letter-spacing: -.005em;
+    margin: 0 0 .75rem; font: 400 1.6rem/1.2 var(--serif);
+    color: var(--depth); letter-spacing: -.01em;
   }
   .mini-gallery-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem;
@@ -206,19 +206,20 @@
   .mini-gallery-grid img:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
 
   /* Findings / videos */
-  .video-grid {
-    display: grid; gap: 1.25rem; margin-top: 1.5rem;
-    grid-template-columns: minmax(0, 1fr);
+  .video-feature { margin-top: 1.5rem; }
+  .video-feature video {
+    display: block; width: 100%; height: auto; border-radius: 3px; background: var(--depth);
+  }
+  .video-row {
+    display: grid; gap: 1.25rem 1rem; margin-top: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   @media (min-width: 48rem) {
-    .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .video-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
-  .video-frame {
-    position: relative; width: 100%; aspect-ratio: 16 / 9;
-    background: var(--depth); border-radius: 3px; overflow: hidden;
-  }
-  .video-frame iframe {
-    position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+  .video-tall {
+    display: block; width: 100%; aspect-ratio: 1 / 2;
+    object-fit: cover; border-radius: 3px; background: var(--depth);
   }
   .video-caption { margin: .6rem 0 0; font-size: .92rem; color: var(--muted); }
   .video-caption-large {
@@ -281,11 +282,11 @@
   .quote-side { display: grid; gap: 2rem; }
   .quote-side blockquote p { font: 400 1.2rem/1.5 var(--serif); }
   .voices-note { margin: 2.5rem 0 0; }
-  #dead-end-comment-note { font-weight: 600; color: var(--buoy); }
-  #dead-end-comment-note.is-flashing { animation: note-flash .4s ease-in-out 3; }
+  .dead-end-note { font-weight: 600; color: var(--buoy); }
+  .dead-end-note.is-flashing { animation: note-flash .4s ease-in-out 3; }
   @keyframes note-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
   @media (prefers-reduced-motion: reduce) {
-    #dead-end-comment-note.is-flashing { animation: none; }
+    .dead-end-note.is-flashing { animation: none; }
   }
 
   /* Contact */
@@ -426,15 +427,13 @@
 
   <!-- ===== Some of our findings =====
        Photos come in by email and are added to the "Camper photos" area via the
-       /admin editor. Videos are added by hand, right here in the code — to add
-       a real video, add a new block like the one below:
+       /admin editor. Videos are added by hand. To add another tall phone video,
+       upload it to the VIDEOS folder and copy this block into the video-row list:
 
        <div>
-         <div class="video-frame">
-           <video controls preload="metadata" style="width:100%;height:100%;">
-             <source src="videos/your-file-name.mp4" type="video/mp4">
-           </video>
-         </div>
+         <video class="video-tall" controls preload="metadata">
+           <source src="VIDEOS/your-file-name.mp4" type="video/mp4">
+         </video>
          <p class="video-caption">A short line describing what's in this video.</p>
        </div>
   -->
@@ -443,47 +442,38 @@
       <h2 id="findings-title">Some of our findings</h2>
       <p class="section-intro">Most of our data starts as a person, a boat or a buoy on the water &mdash; here's some of what that looks like.</p>
 
-      <div class="video-grid">
+      <div class="video-feature">
+        <p class="video-caption-large">(very scientific analysis)</p>
+        <video controls preload="metadata">
+          <source src="VIDEOS/very-flat.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="video-row">
         <div>
-          <p class="video-caption-large">(very scientific analysis)</p>
-          <div class="video-frame">
-            <video controls preload="metadata" style="width:100%;height:100%;">
-              <source src="VIDEOS/very-flat.mp4" type="video/mp4">
-            </video>
-          </div>
+          <video class="video-tall" controls preload="metadata">
+            <source src="VIDEOS/tali-jayne.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Two of our researchers diligently studying.</p>
         </div>
         <div>
-          <div class="video-frame" style="aspect-ratio: 480 / 988; max-width: 22rem;">
-            <video controls preload="metadata" style="width:100%;height:100%;">
-              <source src="VIDEOS/tali-jayne.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p class="video-caption">A short line about this video.</p>
+          <video class="video-tall" controls preload="metadata">
+            <source src="VIDEOS/sunglasses.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">One of our researchers&rsquo; twin sister.</p>
         </div>
         <div>
-          <div class="video-frame" style="aspect-ratio: 9 / 16; max-width: 22rem;">
-            <video controls preload="metadata" style="width:100%;height:100%;">
-              <source src="VIDEOS/sunglasses.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p class="video-caption">A short line about this video.</p>
+          <video class="video-tall" controls preload="metadata">
+            <source src="VIDEOS/nite.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Very dark work.</p>
+          <div>
+          <video class="video-tall" controls preload="metadata">
+            <source src="VIDEOS/lake_padel_board.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Very serious work being done.</p>
         </div>
-        <div>
-          <div class="video-frame" style="aspect-ratio: 480 / 988; max-width: 22rem;">
-            <video controls preload="metadata" style="width:100%;height:100%;">
-              <source src="VIDEOS/nite.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p class="video-caption">A short line about this video.</p>
-        </div>
-        <div>
-          <div class="video-frame" style="aspect-ratio: 480 / 930; max-width: 22rem;">
-            <video controls preload="metadata" style="width:100%;height:100%;">
-              <source src="VIDEOS/lake_padel_board.mp4" type="video/mp4">
-            </video>
-          </div>
-          <p class="video-caption">A short line about this video.</p>
-        </div>
+      </div>
       </div>
 
       <!-- Share-photos: a plain mailto card. Photos come in by email to
@@ -493,7 +483,7 @@
         <h3 id="share-title">Share a photo</h3>
         <p class="form-note">Got a shot from the water? Email us at <a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> with your photo and comments, and we'll add our favorites below.</p>
         <p class="actions" style="margin-top:.5rem;">
-          <a class="btn" href="mailto:fellowcampers@gmail.com?subject=Photo%20for%20the%20site&body=Attach%20your%20photo%2C%20then%20tell%20us%20a%20bit%20about%20it%20here%3A%0A%0A">Email us a photo</a>
+          <a class="btn" href="#" data-dead-end>Email us a photo</a><span class="dead-end-note"></span>
         </p>
       </div>
 
@@ -555,7 +545,7 @@
       <h2 id="comments-title">What people say about our work</h2>
       <div class="voices" id="comments-list"></div>
       <p class="form-note" id="comments-empty" hidden>No comments published yet.</p>
-      <p class="voices-note">Have something to say about our work? <a href="#" id="dead-end-comment">Send us a comment</a><span id="dead-end-comment-note"></span>.</p>
+      <p class="voices-note">Have something to say about our work? <a href="#" data-dead-end>Send us a comment</a><span class="dead-end-note"></span>.</p>
     </div>
   </section>
 
@@ -644,24 +634,25 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.classList.remove('is-open'); });
   }
 
-  // "Send us a comment" is a joke dead end: each click flashes "(click again)"
-  var commentLink = document.getElementById('dead-end-comment');
-  var commentNote = document.getElementById('dead-end-comment-note');
-  var noteTimer;
-  if (commentLink && commentNote) {
-    commentLink.addEventListener('click', function (e) {
+  // Joke dead ends ("Send us a comment", "Email us a photo"):
+  // each click flashes "(click again)" next to the link instead of going anywhere
+  Array.prototype.forEach.call(document.querySelectorAll('[data-dead-end]'), function (link) {
+    var note = link.nextElementSibling;
+    if (!note || !note.classList.contains('dead-end-note')) return;
+    var timer;
+    link.addEventListener('click', function (e) {
       e.preventDefault();
-      clearTimeout(noteTimer);
-      commentNote.textContent = ' (click again)';
-      commentNote.classList.remove('is-flashing');
-      void commentNote.offsetWidth; // restart the flash on every click
-      commentNote.classList.add('is-flashing');
-      noteTimer = setTimeout(function () {
-        commentNote.textContent = '';
-        commentNote.classList.remove('is-flashing');
+      clearTimeout(timer);
+      note.textContent = ' (click again)';
+      note.classList.remove('is-flashing');
+      void note.offsetWidth; // restart the flash on every click
+      note.classList.add('is-flashing');
+      timer = setTimeout(function () {
+        note.textContent = '';
+        note.classList.remove('is-flashing');
       }, 2000);
     });
-  }
+  });
 })();
 </script>
 
