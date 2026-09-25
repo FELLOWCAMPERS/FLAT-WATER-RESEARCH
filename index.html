@@ -271,7 +271,7 @@
   /* Comments */
   .voices { display: grid; gap: 2rem clamp(1.5rem, 5vw, 3.5rem); margin-top: 1.5rem; }
   @media (min-width: 60rem) {
-    .voices { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: start; }
+    .voices { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   }
   .quote { margin: 0; padding-top: 1.5rem; border-top: 1px solid var(--line); }
   .quote blockquote { margin: 0; }
@@ -705,7 +705,7 @@
     if (!list) return;
     if (!items.length) { if (empty) empty.hidden = false; return; }
     list.innerHTML = items.map(function (item, i) {
-      var wrap = i === 0 ? 'quote quote-main' : 'quote';
+      var wrap = 'quote quote-main'; // every comment uses the same large size
       return '<figure class="' + wrap + '"><blockquote><p>\u201C' + esc(item.quote) + '\u201D</p></blockquote>' +
         '<figcaption>' + esc(item.author) + '</figcaption></figure>';
     }).join('');
