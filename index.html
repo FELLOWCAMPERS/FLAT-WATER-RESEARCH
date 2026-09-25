@@ -147,6 +147,16 @@
     text-shadow: 0 2px 22px rgba(0,0,0,.4);
   }
   .display span { display: block; }
+  .hero-inner { display: grid; gap: 1.25rem; align-items: end; }
+  @media (min-width: 60rem) {
+    .hero-inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 3rem; }
+    .hero-lead { justify-self: end; text-align: right; padding-bottom: .6rem; }
+  }
+  .hero-lead {
+    margin: 0; max-width: 26rem; color: #fff;
+    font: 300 clamp(1.15rem, 1.9vw, 1.55rem)/1.4 var(--serif);
+    text-shadow: 0 1px 14px rgba(0,0,0,.6);
+  }
 
   .intro {
     display: grid; gap: 1.75rem;
@@ -373,20 +383,22 @@
        to change the photo; keep it roughly landscape so the crop looks right. -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
-      <h1 class="display" id="hero-title">
-        <span>The search</span>
-        <span>continues.....</span>
-      </h1>
+      <div class="hero-inner">
+        <h1 class="display" id="hero-title">
+          <span>The search</span>
+          <span>continues.....</span>
+        </h1>
+        <p class="hero-lead">Flatwater Research Institute tracks the conditions that make a lake good for skiing, and shares what we learn with the people who ski it.</p>
+      </div>
     </div>
   </section>
 
   <section aria-label="Introduction">
     <div class="wrap">
       <div class="intro">
-        <p class="lead">Flatwater Research Institute tracks the conditions that make a lake good for skiing, and shares what we learn with the people who ski it.</p>
         <div class="actions">
           <a class="btn" href="#research">Explore our research</a>
-          <a class="btn btn-quiet" href="#contact">Work with us</a>
+          <a class="btn btn-quiet" href="#" data-dead-end>Work with us</a><span class="dead-end-note"></span>
         </div>
       </div>
     </div>
@@ -396,20 +408,20 @@
   <section class="band" id="research" aria-labelledby="research-title">
     <div class="wrap split">
       <div>
-        <h2 id="research-title">Three questions we keep coming back to</h2>
-        <p class="section-intro">Good skiing starts with good water. We track the conditions that turn a lake from choppy and crowded into calm, clear and skiable, and put that information in skiers' hands before they ever leave the dock.</p>
+        <h2 id="research-title">Three questions we keep coming back to (every morning, before coffee)</h2>
+        <p class="section-intro">Good skiing starts with good water. Our researchers apply rigorous observational methods, mainly standing on the dock and pointing, to identify the conditions that turn a lake from choppy and crowded into calm, clear and skiable. Findings are delivered to skiers before they leave the dock, or shouted at them afterward.</p>
         <ul class="questions">
           <li>
             <h3>How flat is the water?</h3>
-            <p>Wake and chop build through the day as wind rises and boat traffic increases. We track surface conditions hour by hour to find the calmest windows, usually right after sunrise, when a lake is closest to glass.</p>
+            <p>Surface disturbance (known in the literature as &ldquo;chop&rdquo;) increases throughout the day as a function of wind speed, boat traffic, and the number of people who said they'd be up at 6&nbsp;a.m. but weren't. Hourly observations consistently show peak flatness just after sunrise, a finding we've replicated every summer and that everyone who sleeps in continues to ignore.</p>
           </li>
           <li>
             <h3>How warm is the water?</h3>
-            <p>Water temperature shapes everything from what to wear to how a fall feels. We monitor temperature through the season and by depth, so skiers know what to expect before they're in it.</p>
+            <p>Water temperature governs several key variables, including wetsuit selection, time spent on the dock deciding, and the volume of the noise a researcher makes when falling in. We measure temperature by season and by depth, depth being however far the researcher was willing to go.</p>
           </li>
           <li>
             <h3>Are there other boats out?</h3>
-            <p>A crowded lake changes everything: wake interference, right-of-way, safety margins. We track typical traffic by time of day and season to help skiers find open water.</p>
+            <p>Boat density is inversely correlated with ski quality and directly correlated with people waving at you for no reason. We track traffic by time of day and season so skiers can find open water, and so we can finally identify who keeps making wake at 7&nbsp;a.m.</p>
           </li>
         </ul>
       </div>
