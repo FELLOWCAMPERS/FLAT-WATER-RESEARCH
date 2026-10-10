@@ -13,187 +13,71 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F2B38'/%3E%3Cpath d='M8 16a8 8 0 0 1 16 0z' fill='%23E8622C'/%3E%3Cpath d='M6 16h20M9 20.5h14M12 25h8' stroke='%23E4EAEC' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 
-<!-- Fonts: Newsreader (headings) + Hanken Grotesk (text). The page falls back to system fonts if these don't load. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap">
 
 <style>
   :root {
-    --mist: #E4EAEC;
-    --sky-top: #F2F6F7;
-    --sky-low: #D9E5E9;
-    --water: #B4C9D0;
-    --tint: #D3E0E4;
-    --slate: #2F5D6B;
-    --depth: #0F2B38;
-    --buoy: #E8622C;
-    --muted: #31505C;
-    --line: rgba(15, 43, 56, .28);
+    --mist: #E4EAEC; --sky-top: #F2F6F7; --sky-low: #D9E5E9; --water: #B4C9D0;
+    --tint: #D3E0E4; --slate: #2F5D6B; --depth: #0F2B38; --buoy: #E8622C;
+    --muted: #31505C; --line: rgba(15, 43, 56, .28);
     --serif: Newsreader, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
     --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     color-scheme: light;
   }
-
   *, *::before, *::after { box-sizing: border-box; }
-
   html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1.5rem; }
-  @media (prefers-reduced-motion: no-preference) {
-    html { scroll-behavior: smooth; }
-  }
-
-  body {
-    margin: 0;
-    background: var(--mist);
-    color: var(--depth);
-    font: 400 1.0625rem/1.6 var(--sans);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body { margin: 0; background: var(--mist); color: var(--depth); font: 400 1.0625rem/1.6 var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
   a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .22em; }
-  a:focus-visible,
-  button:focus-visible,
-  input:focus-visible,
-  select:focus-visible,
-  textarea:focus-visible {
-    outline: 3px solid var(--buoy);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
-
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--buoy); outline-offset: 3px; border-radius: 2px; }
   .wrap { width: min(100% - 3rem, 72rem); margin-inline: auto; }
-
-  .skip {
-    position: absolute; left: 1rem; top: -4rem; z-index: 20;
-    padding: .6rem 1rem; background: var(--depth); color: var(--mist);
-  }
+  .skip { position: absolute; left: 1rem; top: -4rem; z-index: 20; padding: .6rem 1rem; background: var(--depth); color: var(--mist); }
   .skip:focus { top: 1rem; }
 
-  /* ---------- Header ---------- */
   .site-header { position: absolute; inset: 0 0 auto 0; z-index: 10; padding-block: 1.25rem; }
-  .site-header .wrap {
-    display: flex; flex-wrap: wrap; align-items: center;
-    gap: .75rem 2.5rem;
-  }
-  .brand-group {
-    display: flex; flex-wrap: wrap; align-items: center; gap: .75rem;
-  }
-  .brand {
-    display: inline-flex; align-items: center; gap: .7rem;
-    font: 500 1.3rem/1.2 var(--serif); letter-spacing: -.005em; text-decoration: none;
-    color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.45);
-  }
+  .site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 2.5rem; }
+  .brand-group { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+  .brand { display: inline-flex; align-items: center; gap: .7rem; font: 500 1.3rem/1.2 var(--serif); letter-spacing: -.005em; text-decoration: none; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.45); }
   .brand svg { width: 1.9rem; height: 1.9rem; flex: none; }
-  .site-nav ul {
-    display: flex; flex-wrap: wrap; gap: .25rem 1.6rem;
-    margin: 0; padding: 0; list-style: none;
-    font-size: .98rem; font-weight: 500;
-  }
-  .site-nav a {
-    display: inline-block; padding-block: .35rem; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.45);
-    text-decoration: none; border-bottom: 1px solid transparent;
-  }
+  .site-nav ul { display: flex; flex-wrap: wrap; gap: .25rem 1.6rem; margin: 0; padding: 0; list-style: none; font-size: .98rem; font-weight: 500; }
+  .site-nav a { display: inline-block; padding-block: .35rem; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.45); text-decoration: none; border-bottom: 1px solid transparent; }
   .site-nav a:hover { border-bottom-color: currentColor; }
-
-  .header-president {
-    display: inline-flex; align-items: center; gap: .6rem;
-    text-decoration: none; color: #fff;
-  }
-  .header-president img {
-    width: 3.3rem; height: 3.3rem; border-radius: 50%;
-    object-fit: cover; border: 2px solid rgba(255,255,255,.85);
-    box-shadow: 0 1px 8px rgba(0,0,0,.4);
-  }
-  .header-president span {
-    font-size: .98rem; font-weight: 500; line-height: 1.25;
-    text-shadow: 0 1px 10px rgba(0,0,0,.5);
-  }
+  .header-president { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; color: #fff; }
+  .header-president img { width: 3.3rem; height: 3.3rem; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,.85); box-shadow: 0 1px 8px rgba(0,0,0,.4); }
+  .header-president span { font-size: .98rem; font-weight: 500; line-height: 1.25; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
   #president-photo-trigger { cursor: zoom-in; }
 
-  .lightbox {
-    display: none; position: fixed; inset: 0; z-index: 100;
-    background: rgba(9,20,26,.9);
-    align-items: center; justify-content: center;
-    padding: 2rem; cursor: zoom-out;
-  }
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(9,20,26,.9); align-items: center; justify-content: center; padding: 2rem; cursor: zoom-out; }
   .lightbox.is-open { display: flex; }
-  .lightbox img {
-    max-width: min(90vw, 40rem); max-height: 85vh;
-    width: 100%; height: auto; border-radius: 4px;
-    box-shadow: 0 10px 40px rgba(0,0,0,.5);
-  }
+  .lightbox img { max-width: min(90vw, 40rem); max-height: 85vh; width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
 
-  /* ---------- Hero: full-bleed photo ---------- */
-  .hero {
-    position: relative;
-    min-height: min(46rem, 92vh);
-    display: flex; align-items: flex-end;
-    background: #16222a url("images/hero-sunset.jpg") center 62% / cover no-repeat;
-  }
-  .hero::before {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(9,20,26,.15) 0%, rgba(9,20,26,.12) 45%, rgba(9,20,26,.72) 100%);
-  }
+  .hero { position: relative; min-height: min(46rem, 92vh); display: flex; align-items: flex-end; background: #16222a url("images/hero-sunset.jpg") center 62% / cover no-repeat; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,20,26,.15) 0%, rgba(9,20,26,.12) 45%, rgba(9,20,26,.72) 100%); }
   .hero .wrap { position: relative; padding-block: clamp(2rem, 6vw, 4rem); color: #fff; }
-  .display {
-    margin: 0;
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(2.2rem, 7.5vw, 5.75rem);
-    line-height: 1.06;
-    letter-spacing: -.02em;
-    font-optical-sizing: auto;
-    text-shadow: 0 2px 22px rgba(0,0,0,.4);
-  }
+  .display { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(2.2rem, 7.5vw, 5.75rem); line-height: 1.06; letter-spacing: -.02em; font-optical-sizing: auto; text-shadow: 0 2px 22px rgba(0,0,0,.4); }
   .display span { display: block; }
   .hero-inner { display: grid; gap: 1.25rem; align-items: end; }
   @media (min-width: 60rem) {
     .hero-inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 3rem; }
     .hero-lead { justify-self: end; text-align: right; padding-bottom: .6rem; }
   }
-  .hero-lead {
-    margin: 0; max-width: 26rem; color: #fff;
-    font: 300 clamp(1.15rem, 1.9vw, 1.55rem)/1.4 var(--serif);
-    text-shadow: 0 1px 14px rgba(0,0,0,.6);
-  }
+  .hero-lead { margin: 0; max-width: 26rem; color: #fff; font: 300 clamp(1.15rem, 1.9vw, 1.55rem)/1.4 var(--serif); text-shadow: 0 1px 14px rgba(0,0,0,.6); }
 
-  .intro {
-    display: grid; gap: 1.75rem;
-    padding-block: clamp(1rem, 2vw, 1.5rem) clamp(1.75rem, 3.5vw, 2.75rem);
-    background: var(--mist);
-  }
-  .lead {
-    margin: 0; max-width: 34rem;
-    font: 300 clamp(1.3rem, 2.4vw, 1.75rem)/1.4 var(--serif);
-  }
+  .intro { display: grid; gap: 1.75rem; padding-block: clamp(1rem, 2vw, 1.5rem) clamp(1.75rem, 3.5vw, 2.75rem); background: var(--mist); }
+  .lead { margin: 0; max-width: 34rem; font: 300 clamp(1.3rem, 2.4vw, 1.75rem)/1.4 var(--serif); }
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; }
-  .btn {
-    display: inline-block; padding: .85rem 1.5rem;
-    background: var(--depth); color: var(--mist);
-    border: 1px solid var(--depth); border-radius: 3px;
-    font-weight: 600; text-decoration: none;
-    transition: background-color .15s, border-color .15s, color .15s;
-  }
+  .btn { display: inline-block; padding: .85rem 1.5rem; background: var(--depth); color: var(--mist); border: 1px solid var(--depth); border-radius: 3px; font-weight: 600; text-decoration: none; transition: background-color .15s, border-color .15s, color .15s; }
   .btn:hover { background: var(--slate); border-color: var(--slate); }
   .btn-quiet { background: transparent; color: var(--depth); }
   .btn-quiet:hover { background: transparent; color: var(--slate); border-color: var(--slate); }
-  .btn-light { background: var(--mist); color: var(--depth); border-color: var(--mist); }
-  .btn-light:hover { background: #fff; border-color: #fff; }
 
-  /* ---------- Sections ---------- */
   .band { padding-block: clamp(2rem, 4.5vw, 3.75rem); }
-  h2 {
-    margin: 0 0 1.25rem; max-width: 20ch;
-    font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--serif); letter-spacing: -.015em;
-  }
+  h2 { margin: 0 0 1.25rem; max-width: 20ch; font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--serif); letter-spacing: -.015em; }
   .section-intro { max-width: 36rem; margin: 0 0 1.5rem; }
-
   .split { display: grid; gap: clamp(2.5rem, 6vw, 5rem); }
-  @media (min-width: 60rem) {
-    .split { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: start; }
-    .split .figure { position: sticky; top: 2rem; }
-  }
+  @media (min-width: 60rem) { .split { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: start; } }
 
   .questions { margin: 0; padding: 0; list-style: none; }
   .questions li { padding-block: 1.5rem 1.6rem; border-top: 1px solid var(--line); }
@@ -201,88 +85,37 @@
   .questions h3 { margin: 0 0 .5rem; font: 400 1.6rem/1.2 var(--serif); letter-spacing: -.01em; }
   .questions p { margin: 0; max-width: 34rem; }
 
-  .figure { margin: 0; }
-  .mini-gallery-label {
-    margin: 0 0 .75rem; font: 400 1.6rem/1.2 var(--serif);
-    color: var(--depth); letter-spacing: -.01em;
-  }
-  .mini-gallery-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem;
-  }
-  .mini-gallery-grid img {
-    display: block; width: 100%; aspect-ratio: 1 / 1;
-    object-fit: cover; border-radius: 2px; background: var(--water);
-  }
+  .mini-gallery-label { margin: 0 0 .75rem; font: 400 1.6rem/1.2 var(--serif); color: var(--depth); letter-spacing: -.01em; }
+  .mini-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+  .mini-gallery-grid img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 2px; background: var(--water); }
   .mini-gallery-grid img:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
-  /* On wider screens, stretch the three photos so they end level with the
-     last research question instead of leaving blank space below them. */
   @media (min-width: 60rem) {
     #research .split { align-items: stretch; }
     .mini-gallery { display: flex; flex-direction: column; }
-    .mini-gallery-grid {
-      flex: 1; min-height: 0;
-      grid-template-rows: minmax(0, 1.15fr) minmax(0, 1fr);
-    }
-    .mini-gallery-grid img,
-    .mini-gallery-grid img:first-child { aspect-ratio: auto; height: 100%; min-height: 0; }
+    .mini-gallery-grid { flex: 1; min-height: 0; grid-template-rows: minmax(0, 1.15fr) minmax(0, 1fr); }
+    .mini-gallery-grid img, .mini-gallery-grid img:first-child { aspect-ratio: auto; height: 100%; min-height: 0; }
   }
 
-  /* Findings / videos */
   .video-feature { margin-top: 1.5rem; }
-  .video-feature video {
-    display: block; width: 100%; height: auto; border-radius: 3px; background: var(--depth);
-  }
-  .video-row {
-    display: grid; gap: 1.25rem 1rem; margin-top: 1.5rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  @media (min-width: 48rem) {
-    .video-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  }
-  .video-tall {
-    display: block; width: 100%; aspect-ratio: 1 / 2;
-    object-fit: cover; border-radius: 3px; background: var(--depth);
-  }
+  .video-feature video { display: block; width: 100%; height: auto; border-radius: 3px; background: var(--depth); }
+  .video-row { display: grid; gap: 1.25rem 1rem; margin-top: 1.5rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 48rem) { .video-row { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .video-tall { display: block; width: 100%; aspect-ratio: 1 / 2; object-fit: cover; border-radius: 3px; background: var(--depth); }
   .video-caption { margin: .6rem 0 0; font-size: .92rem; color: var(--muted); }
-  .video-caption-large {
-    margin: 0 0 .75rem; max-width: 20ch;
-    font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--serif);
-    letter-spacing: -.015em; color: var(--depth);
-  }
-  .figure svg { display: block; width: 100%; height: auto; border-radius: 2px; }
-  .figure svg text { font-family: var(--sans); }
-  .figure figcaption { max-width: 32rem; margin-top: .9rem; font-size: .92rem; color: var(--muted); }
+  .video-caption-large { margin: 0 0 .75rem; max-width: 20ch; font: 300 clamp(2rem, 4.4vw, 3.1rem)/1.12 var(--serif); letter-spacing: -.015em; color: var(--depth); }
 
   .deep { background: var(--depth); color: var(--mist); }
-  .principles {
-    display: grid; gap: 2.5rem 3rem; margin-top: 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  }
+  .principles { display: grid; gap: 2.5rem 3rem; margin-top: 3rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
   .principles div { padding-top: 1.25rem; border-top: 1px solid rgba(228, 234, 236, .35); }
   .principles h3 { margin: 0 0 .6rem; font: 400 1.55rem/1.2 var(--serif); }
   .principles p { margin: 0; color: #C7D5DA; }
-  .fine-print {
-    margin: .9rem 0 0; padding: 0; list-style: none;
-    font-size: 1.0625rem; line-height: 1.6; color: #C7D5DA;
-  }
-
-  .pubs { margin: 2.5rem 0 0; padding: 0; list-style: none; }
-  .pubs li {
-    display: grid; grid-template-columns: 4.25rem minmax(0, 1fr); gap: .25rem 1.5rem;
-    padding-block: 1.4rem; border-top: 1px solid var(--line);
-  }
-  .pubs li:last-child { border-bottom: 1px solid var(--line); }
-  .pubs .year { font-weight: 500; font-variant-numeric: tabular-nums; color: var(--slate); }
-  .pubs h3 { margin: 0; max-width: 40rem; font: 400 1.45rem/1.25 var(--serif); }
-  .pubs .kind { margin: .25rem 0 0; font-size: .95rem; color: var(--muted); }
+  .fine-print { margin: .9rem 0 0; padding: 0; list-style: none; font-size: 1.0625rem; line-height: 1.6; color: #C7D5DA; }
 
   .tint { background: var(--tint); }
-
-  /* Gallery */
   .gallery { display: grid; gap: 1.25rem 1rem; grid-template-columns: minmax(0, 1fr); margin-top: 1.5rem; }
   .shot { margin: 0; }
   .shot .frame { height: clamp(13rem, 55vw, 16rem); overflow: hidden; border-radius: 2px; background: var(--water); }
-  .shot .frame svg, .shot .frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .shot .frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .shot figcaption { margin-top: .6rem; font-size: .92rem; color: var(--muted); }
   @media (min-width: 48rem) {
     .gallery { grid-template-columns: repeat(12, minmax(0, 1fr)); }
@@ -291,27 +124,18 @@
     .shot-narrow { grid-column: span 5; }
   }
 
-  /* Comments */
   .voices { display: grid; gap: 2rem clamp(1.5rem, 5vw, 3.5rem); margin-top: 1.5rem; }
-  @media (min-width: 60rem) {
-    .voices { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-  }
+  @media (min-width: 60rem) { .voices { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
   .quote { margin: 0; padding-top: 1.5rem; border-top: 1px solid var(--line); }
   .quote blockquote { margin: 0; }
-  .quote blockquote p { margin: 0; }
+  .quote blockquote p { margin: 0; font: 300 clamp(1.6rem, 3.2vw, 2.4rem)/1.3 var(--serif); letter-spacing: -.01em; }
   .quote figcaption { margin-top: 1rem; font-size: .95rem; font-weight: 600; color: var(--slate); }
-  .quote-main blockquote p { font: 300 clamp(1.6rem, 3.2vw, 2.4rem)/1.3 var(--serif); letter-spacing: -.01em; }
-  .quote-side { display: grid; gap: 2rem; }
-  .quote-side blockquote p { font: 400 1.2rem/1.5 var(--serif); }
   .voices-note { margin: 2.5rem 0 0; }
   .dead-end-note { font-weight: 600; color: var(--buoy); }
   .dead-end-note.is-flashing { animation: note-flash .4s ease-in-out 3; }
   @keyframes note-flash { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-  @media (prefers-reduced-motion: reduce) {
-    .dead-end-note.is-flashing { animation: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { .dead-end-note.is-flashing { animation: none; } }
 
-  /* Contact */
   .contact { background: var(--sky-top); }
   .contact .split { align-items: start; }
   .details { font-style: normal; }
@@ -319,32 +143,19 @@
   .details dt { font-weight: 600; }
   .details dd { margin: 0; }
 
-  .form {
-    display: grid; gap: 1.1rem;
-    padding: clamp(1.25rem, 3vw, 2rem);
-    background: var(--mist); border: 1px solid var(--line); border-radius: 3px;
-  }
+  .form { display: grid; gap: 1.1rem; padding: clamp(1.25rem, 3vw, 2rem); background: var(--mist); border: 1px solid var(--line); border-radius: 3px; }
   .form h3 { margin: 0; font: 400 1.6rem/1.2 var(--serif); }
   .field { display: grid; gap: .4rem; }
   .field label { font-size: .95rem; font-weight: 600; }
-  .field input, .field select, .field textarea {
-    width: 100%; padding: .7rem .8rem;
-    font: inherit; color: inherit;
-    background: #fff; border: 1px solid #6D8791; border-radius: 3px;
-  }
+  .field input, .field select, .field textarea { width: 100%; padding: .7rem .8rem; font: inherit; color: inherit; background: #fff; border: 1px solid #6D8791; border-radius: 3px; }
   .field textarea { min-height: 9rem; resize: vertical; }
   .form .btn { justify-self: start; font: inherit; font-weight: 600; cursor: pointer; }
   .form-status { min-height: 1.6em; margin: 0; font-size: .95rem; color: var(--muted); }
-  .form-status.is-visible {
-    display: block; margin-top: .5rem; padding: .75rem 1rem;
-    font-size: 1.05rem; font-weight: 600; border-radius: 3px;
-    background: #FFF3CD; color: #664d03; border: 1px solid #FFE69C;
-  }
+  .form-status.is-visible { display: block; margin-top: .5rem; padding: .75rem 1rem; font-size: 1.05rem; font-weight: 600; border-radius: 3px; background: #FFF3CD; color: #664d03; border: 1px solid #FFE69C; }
   .form-status.is-success { background: #D1E7DD; color: #0A3622; border-color: #A3CFBB; }
   .form-status.is-error { background: #F8D7DA; color: #58151C; border-color: #F1AEB5; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .form-note { margin: 0; font-size: .88rem; color: var(--muted); }
-  .field input[type="file"] { padding: .5rem; background: #fff; }
   .share-form { max-width: 34rem; margin-top: 1.5rem; }
 
   .site-footer { background: var(--depth); color: var(--mist); padding-block: 2rem; font-size: .92rem; }
@@ -383,16 +194,12 @@
   </div>
 </header>
 
-<!-- Photo lightbox: hidden until president-photo-trigger is clicked. Click
-     anywhere on the overlay (or press Escape) to close it again. -->
 <div class="lightbox" id="photo-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo of Tom Blakeman">
   <img src="images/president-headshot.jpg" alt="Tom Blakeman, President">
 </div>
 
 <main id="main">
 
-  <!-- Hero photo: images/hero-sunset.jpg. Swap in a different file (same path)
-       to change the photo; keep it roughly landscape so the crop looks right. -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div class="hero-inner">
@@ -416,7 +223,6 @@
     </div>
   </section>
 
-  <!-- ===== Research ===== -->
   <section class="band" id="research" aria-labelledby="research-title">
     <div class="wrap split">
       <div>
@@ -441,6 +247,7 @@
       <div class="mini-gallery" aria-label="Where the work happens">
         <p class="mini-gallery-label">Where the work happens</p>
         <div class="mini-gallery-grid">
+          <img src="images/VERY FLAT.JPG" alt="Very flat water" loading="lazy">
           <img src="images/ski-wide-1.jpg" alt="A skier on calm, glassy water behind a boat, hills reflected in the lake" loading="lazy">
           <img src="images/ski-action.jpg" alt="A skier carving hard, throwing a large spray of water, seen from the boat" loading="lazy">
           <img src="images/ski-wide-2.jpg" alt="A skier behind a boat on a calm lake under a partly clouded sky" loading="lazy">
@@ -450,17 +257,8 @@
   </section>
 
   <!-- ===== Some of our findings =====
-       Photos come in by email and are added to the "Camper photos" area via the
-       /admin editor. Videos are added by hand. To add another tall phone video,
-       upload it to the VIDEOS folder and copy this block into the video-row list:
-
-       <div>
-         <video class="video-tall" controls preload="metadata">
-           <source src="VIDEOS/your-file-name.mp4" type="video/mp4">
-         </video>
-         <p class="video-caption">A short line describing what's in this video.</p>
-       </div>
-  -->
+       Videos are added by hand. To add another tall video, upload it to the
+       VIDEOS folder and copy a block from .video-row below. -->
   <section class="band tint" id="findings" aria-labelledby="findings-title">
     <div class="wrap">
       <h2 id="findings-title">Some of our findings</h2>
@@ -491,18 +289,19 @@
             <source src="VIDEOS/nite.mp4" type="video/mp4">
           </video>
           <p class="video-caption">Very dark work.</p>
-          <div>
+        </div>
+        <div>
           <video class="video-tall" controls preload="metadata">
             <source src="VIDEOS/lake_padel_board.mp4" type="video/mp4">
           </video>
           <p class="video-caption">Very serious work being done.</p>
         </div>
-      </div>
+        <div>
+          <img class="video-tall" src="images/SPECIAL NEEDS.jpg" alt="Serious research in progress">
+          <p class="video-caption">Very serious work being done.</p>
+        </div>
       </div>
 
-      <!-- Share-photos: a plain mailto card. Photos come in by email to
-           fellowcampers@gmail.com, and the site owner adds favorites to the
-           Camper photos gallery below through /admin. -->
       <div class="form share-form" style="margin-top:1.5rem;">
         <h3 id="share-title">Share a photo</h3>
         <p class="form-note">Got a shot from the water? Email us at <a href="mailto:fellowcampers@gmail.com">fellowcampers@gmail.com</a> with your photo and comments, and we'll add our favorites below.</p>
@@ -511,14 +310,11 @@
         </p>
       </div>
 
-      <!-- Camper photos: populated from content/camper-photos.json via the /admin
-           editor, not hand-edited here. -->
       <h3 class="camper-photos-heading" hidden>Camper photos</h3>
       <div class="gallery" id="camper-photos-list" style="margin-top:1.5rem;"></div>
     </div>
   </section>
 
-  <!-- ===== Approach ===== -->
   <section class="band deep" id="approach" aria-labelledby="approach-title">
     <div class="wrap">
       <h2 id="approach-title">How we work</h2>
@@ -561,9 +357,6 @@
     </div>
   </section>
 
-  <!-- ===== Comments =====
-       Populated from content/testimonials.json via /admin. Add real comments
-       there (with the speaker's permission). -->
   <section class="band" id="comments" aria-labelledby="comments-title">
     <div class="wrap">
       <h2 id="comments-title">What people say about our work</h2>
@@ -573,7 +366,6 @@
     </div>
   </section>
 
-  <!-- ===== Contact ===== -->
   <section class="band contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap split">
       <div>
@@ -589,7 +381,6 @@
         </address>
       </div>
 
-      <!-- Contact form: sends through Formspree, then returns here with ?sent=1 -->
       <form class="form" id="contact-form" action="https://formspree.io/f/mvkgayvr" method="POST">
         <input type="hidden" name="_next" value="https://flatwaterresearch.com/?sent=1#contact">
         <h3>Send a message</h3>
@@ -636,11 +427,9 @@
 
 <script>
 (function () {
-  // Footer year
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  // Thank-you message after Formspree sends the visitor back with ?sent=1
   if (window.location.search.indexOf('sent=1') !== -1) {
     var status = document.getElementById('form-status');
     if (status) {
@@ -649,7 +438,6 @@
     }
   }
 
-  // President photo lightbox
   var trigger = document.getElementById('president-photo-trigger');
   var box = document.getElementById('photo-lightbox');
   if (trigger && box) {
@@ -658,8 +446,6 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.classList.remove('is-open'); });
   }
 
-  // Joke dead ends ("Send us a comment", "Email us a photo"):
-  // each click flashes "(click again)" next to the link instead of going anywhere
   Array.prototype.forEach.call(document.querySelectorAll('[data-dead-end]'), function (link) {
     var note = link.nextElementSibling;
     if (!note || !note.classList.contains('dead-end-note')) return;
@@ -669,7 +455,7 @@
       clearTimeout(timer);
       note.textContent = ' (click again)';
       note.classList.remove('is-flashing');
-      void note.offsetWidth; // restart the flash on every click
+      void note.offsetWidth;
       note.classList.add('is-flashing');
       timer = setTimeout(function () {
         note.textContent = '';
@@ -680,8 +466,6 @@
 })();
 </script>
 
-<!-- Content loader: reads the JSON files that /admin writes to. Only works
-     once the site is served over http(s), e.g. on Cloudflare Pages. -->
 <script>
 (function () {
   function esc(s) {
@@ -696,7 +480,6 @@
     });
   }
 
-  // Camper photos
   get('content/camper-photos.json').then(function (data) {
     var items = (data && data.items) || [];
     var list = document.getElementById('camper-photos-list');
@@ -712,16 +495,14 @@
     }).join('');
   }).catch(function () {});
 
-  // Comments
   get('content/testimonials.json').then(function (data) {
     var items = (data && data.items) || [];
     var list = document.getElementById('comments-list');
     var empty = document.getElementById('comments-empty');
     if (!list) return;
     if (!items.length) { if (empty) empty.hidden = false; return; }
-    list.innerHTML = items.map(function (item, i) {
-      var wrap = 'quote quote-main'; // every comment uses the same large size
-      return '<figure class="' + wrap + '"><blockquote><p>\u201C' + esc(item.quote) + '\u201D</p></blockquote>' +
+    list.innerHTML = items.map(function (item) {
+      return '<figure class="quote quote-main"><blockquote><p>\u201C' + esc(item.quote) + '\u201D</p></blockquote>' +
         '<figcaption>' + esc(item.author) + '</figcaption></figure>';
     }).join('');
   }).catch(function () {
@@ -729,7 +510,6 @@
     if (empty) empty.hidden = false;
   });
 
-  // Contact info (the emails and phones typed above stay if this file is missing)
   get('content/settings.json').then(function (data) {
     var emails = (data && data.emails) || [];
     var phones = (data && data.phones) || [];
